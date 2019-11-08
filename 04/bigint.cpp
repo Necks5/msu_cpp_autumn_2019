@@ -94,7 +94,6 @@ bool BigInt::operator==(const BigInt& other) const {
     if(this == &other) {
         return true;
     }
-    //std::cout << this-> now_ind << ' ' << other.now_ind << std::endl;
     if(this->sign == other.sign && this->now_ind == other.now_ind) {
         for(int i = 0; i < this->now_ind; i++) {
             if(this->mem[i] != other.mem[i]) {
