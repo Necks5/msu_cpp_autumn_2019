@@ -144,7 +144,6 @@ BigInt BigInt::operator+(const BigInt& other) const {
     }
     int last_nozero = 0;
     for(int i = 0; i < tmp.max_ind; i++) {
-        //std::cout << i << '\t' << tmp.mem[i] << std::endl;
         if(tmp.mem[i] != 0) {
             last_nozero = i;
         }
