@@ -94,7 +94,6 @@ bool BigInt::operator==(const BigInt& other) const {
     if(this == &other) {
         return true;
     }
-    //std::cout << this-> now_ind << ' ' << other.now_ind << std::endl;
     if(this->sign == other.sign && this->now_ind == other.now_ind) {
         for(int i = 0; i < this->now_ind; i++) {
             if(this->mem[i] != other.mem[i]) {
@@ -145,7 +144,6 @@ BigInt BigInt::operator+(const BigInt& other) const {
     }
     int last_nozero = 0;
     for(int i = 0; i < tmp.max_ind; i++) {
-        //std::cout << i << '\t' << tmp.mem[i] << std::endl;
         if(tmp.mem[i] != 0) {
             last_nozero = i;
         }
