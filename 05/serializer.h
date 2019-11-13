@@ -7,6 +7,7 @@ enum class Error
     NoError,
     CorruptedArchive
 };
+/////
 
 class Serializer
 {
@@ -16,7 +17,7 @@ class Serializer
     template <class T, class... Args>
     Error process(T&& val, Args&&... args)
     {
-        if(process(val) == Error::NoError)
+        if(process(std::forward<T>(val)) == Error::NoError)
             return process(std::forward<Args>(args)...);
         return Error::CorruptedArchive;
     }
@@ -67,7 +68,7 @@ class Deserializer
     template <class T, class... Args>
     Error process(T&& val, Args&&... args)
     {
-        if(process(val) == Error::NoError)
+        if(process(std::forward<T>(val)) == Error::NoError)
             return process(std::forward<Args>(args)...);
         return Error::CorruptedArchive;
     }
