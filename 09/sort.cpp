@@ -4,8 +4,9 @@
 #include <thread>
 #include <string.h>
 #include <cmath>
+#include <cstdlib>
+#include <exception> 
 
-//using namespace std;
 using intl = uint64_t;
 using FILE_pointer = std::unique_ptr<FILE, int(*)(FILE*)>;
 const int amount = 1 << 18;
@@ -18,8 +19,7 @@ const char *output_second_file = "outputtmp2.bin";
 FILE * myfopen(const char * fname, const char * modeopen ){
     FILE* f = fopen(fname, modeopen);
     if(!f) {
-        std::cout << "can not open file\n";
-        exit(1);
+        throw std::runtime_error("can not open file");
     } else {
         return f;
     }
@@ -151,5 +151,6 @@ int main() {
         size <<= 1;
         merge_in_one(!(n & 1));
     }
+    std::system("rm outputtmp1.bin outputtmp2.bin temp.bin");
     return 0;
 }
